@@ -54,25 +54,25 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 	SELECT *
 	FROM user
 	WHERE   (id
-		|| name
-		|| review_count
-		|| yelping_since
-		|| useful
-		|| funny
-		|| cool
-		|| fans
-		|| average_stars
-		|| compliment_hot
-		|| compliment_more
-		|| compliment_profile
-		|| compliment_cute
-		|| compliment_list
-		|| compliment_note
-		|| compliment_plain
-		|| compliment_cool
-		|| compliment_funny
-		|| compliment_writer
-		|| compliment_photos) IS NULL
+		OR name
+		OR review_count
+		OR yelping_since
+		OR useful
+		OR funny
+		OR cool
+		OR fans
+		OR average_stars
+		OR compliment_hot
+		OR compliment_more
+		OR compliment_profile
+		OR compliment_cute
+		OR compliment_list
+		OR compliment_note
+		OR compliment_plain
+		OR compliment_cool
+		OR compliment_funny
+		OR compliment_writer
+		OR compliment_photos) IS NULL
 
 
 
