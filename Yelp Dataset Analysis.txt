@@ -51,28 +51,28 @@ Note: Primary Keys are denoted in the ER-Diagram with a yellow key icon.
 	
 	SQL code used to arrive at answer:
 	
-		SELECT *
-		FROM user
-		WHERE   (id
-				|| name
-				|| review_count
-				|| yelping_since
-				|| useful
-				|| funny
-				|| cool
-				|| fans
-				|| average_stars
-				|| compliment_hot
-				|| compliment_more
-				|| compliment_profile
-				|| compliment_cute
-				|| compliment_list
-				|| compliment_note
-				|| compliment_plain
-				|| compliment_cool
-				|| compliment_funny
-				|| compliment_writer
-				|| compliment_photos) IS NULL
+	SELECT *
+	FROM user
+	WHERE   (id
+		|| name
+		|| review_count
+		|| yelping_since
+		|| useful
+		|| funny
+		|| cool
+		|| fans
+		|| average_stars
+		|| compliment_hot
+		|| compliment_more
+		|| compliment_profile
+		|| compliment_cute
+		|| compliment_list
+		|| compliment_note
+		|| compliment_plain
+		|| compliment_cool
+		|| compliment_funny
+		|| compliment_writer
+		|| compliment_photos) IS NULL
 
 
 
@@ -153,7 +153,7 @@ i. Avon
 	SQL code used to arrive at answer:
 
 	SELECT  stars AS star_rating
-			,COUNT(name) AS count
+		,COUNT(name) AS count
 	FROM business
 	WHERE city = 'Avon'
 	GROUP BY stars;
@@ -176,7 +176,7 @@ i. Avon
 	SQL code used to arrive at answer:
 
 	SELECT  stars AS star_rating
-			,COUNT(name) AS count
+		,COUNT(name) AS count
 	FROM business
 	WHERE city = 'Beachwood'
 	GROUP BY stars;
@@ -222,7 +222,7 @@ i. Avon
 
 	Please explain your findings and interpretation of the results:
 	
-	I think there could a rough correlation between the number of reviews and the number of fans, seeing that users with zero to little reviews have very little fans and more reviews will ultimately mnean more fans; however, there does not seem to be a reliable and direct correlation between the number of reviews and the number of fans due to the fact that the number of fans is sparse for each user, and some users with fewer reviews have more fans as compared to other users with more reviews. Based on this evidence, there does not seem to be a correlation between the number of reviews and the number of fans.
+	I think there could be a rough correlation between the number of reviews and the number of fans, seeing that users with zero to little reviews have very little fans and more reviews will ultimately mnean more fans; however, there does not seem to be a reliable and direct correlation between the number of reviews and the number of fans due to the fact that the number of fans is sparse for each user, and some users with fewer reviews have more fans as compared to other users with more reviews. Based on this evidence, there does not seem to be a correlation between the number of reviews and the number of fans.
 
 	
 9. Are there more reviews with the word "love" or with the word "hate" in them?
@@ -232,22 +232,22 @@ i. Avon
 	SQL code used to arrive at answer:
 
 	SELECT  /*  take the sum of the case statement where if the text has
-            the word 'love' in it then it counts as a 1, and if not,
-            then it's a zero*/
-			SUM(
-			CASE
-				WHEN text LIKE '%love%' THEN 1 
-				ELSE 0 
-			END) AS love
-			
-			/*  take the sum of the case statement where if the text has
-				the word 'hate' in it then it counts as a 1, and if not,
-				then it's a zero*/
-			,SUM(
-			CASE
-				WHEN text LIKE '%hate%' THEN 1
-				ELSE 0
-			END) AS hate
+            	the word 'love' in it then it counts as a 1, and if not,
+            	then it's a zero*/
+		SUM(
+		CASE
+			WHEN text LIKE '%love%' THEN 1 
+			ELSE 0 
+		END) AS love
+		
+		/*  take the sum of the case statement where if the text has
+		the word 'hate' in it then it counts as a 1, and if not,
+		then it's a zero*/
+		,SUM(
+		CASE
+			WHEN text LIKE '%hate%' THEN 1
+			ELSE 0
+		END) AS hate
 	FROM review;
 	
 10. Find the top 10 users with the most fans:
@@ -255,7 +255,7 @@ i. Avon
 	SQL code used to arrive at answer:
 	
 	SELECT  name
-			,fans
+		,fans
 	FROM user
 	ORDER BY fans DESC
 	LIMIT 10;
@@ -283,9 +283,9 @@ Part 2: Inferences and Analysis
 
 1. Pick one city and category of your choice and group the businesses in that city or category by their overall star rating. Compare the businesses with 2-3 stars to the businesses with 4-5 stars and answer the following questions. Include your code.
 
-	I picked the city of Tornto in Ontario, Canada, and the category of restaurants.
+	I picked the city of Toronto in Ontario, Canada, and the category of restaurants.
 	The group of 4-5 star restaurants consists of Cabin Fever (4.5 stars), Sushi Osaka (4.5 stars), and Edulis (4 stars).
-	The group of 2-3 star restaurants consists of Big Smoke Burger (3 stars), Pizzaiolo (3 stars), and 99 cent Sushi (2 stars).	
+	The group of 2-3 star restaurants consists of Big Smoke Burger (3 stars), Pizzaiolo (3 stars), and 99 Cent Sushi (2 stars).	
 	
 i. Do the two groups you chose to analyze have a different distribution of hours?
 
@@ -293,30 +293,30 @@ i. Do the two groups you chose to analyze have a different distribution of hours
 
 ii. Do the two groups you chose to analyze have a different number of reviews?
          
-	Yes, the group that has 4-5 stars has a total of 123 reviews, whereas the group that has 2-3 stars has a total of 86 reviews. The 4-5 star group has wide range of reviews, ranging from 8 reviews for Etobicoke up to 89 for Niagara while the group for 2-3 stars ranges from 5 reviews for 99 Cent Sushi to 47 for Big Smoke Burger.
+	Yes, the group that has 4-5 stars has a total of 123 reviews, whereas the group that has 2-3 stars has a total of 86 reviews. The 4-5 star group has a wide range of reviews, ranging from 8 reviews for Etobicoke up to 89 for Niagara while the group for 2-3 stars ranges from 5 reviews for 99 Cent Sushi to 47 for Big Smoke Burger.
          
 iii. Are you able to infer anything from the location data provided between these two groups? Explain.
 
-	Two of the six restaurants are located in the Downtown Core neighborhood and both of them are in the 2-3 star category. There could be some correlation between the neighborhood and average star rating of restaurants, but there isn't enough data to infer such a conclusion.
+	Two of the six restaurants are located in the Downtown Core neighborhood and both of them are in the 2-3 star category. There could be some correlation between the neighborhood and the average star rating of restaurants, but there isn't enough data to infer such a conclusion.
 
 SQL code used for analysis:
 
 	SELECT  -- group restaurants by 2-3 stars and 4-5 stars
-			CASE
-				WHEN (B.stars >= 4.0) THEN '4-5 stars'
-				WHEN (B.stars >= 2.0 AND B.stars <= 3.0) THEN '2-3 stars'
-				ELSE B.stars
-			END star_rating
+		CASE
+			WHEN (B.stars >= 4.0) THEN '4-5 stars'
+			WHEN (B.stars >= 2.0 AND B.stars <= 3.0) THEN '2-3 stars'
+			ELSE B.stars
+		END star_rating
 
-			-- columns to be listed
-			,B.name
-			,B.neighborhood
-			,B.address
-			,B.postal_code
-			,H.hours
-			,C.category
-			,B.stars
-			,B.review_count
+		-- columns to be listed
+		,B.name
+		,B.neighborhood
+		,B.address
+		,B.postal_code
+		,H.hours
+		,C.category
+		,B.stars
+		,B.review_count
 	FROM business B
 	-- join category and hours tables
 	INNER JOIN category C ON B.id = C.business_id
@@ -372,9 +372,9 @@ ii. Difference 2:
 SQL code used for analysis:
 
 	SELECT  -- columns to be listed
-			B.is_open
-			,AVG(B.stars)
-			,AVG(B.review_count)    
+		B.is_open
+		,AVG(B.stars)
+		,AVG(B.review_count)    
 	FROM business B
 	-- join category table
 	INNER JOIN category C ON B.id = C.business_id
@@ -399,14 +399,14 @@ Ideas for analysis include: Parsing out keywords and business attributes for sen
 	
 i. Indicate the type of analysis you chose to do:
 
-    I will analyze a dataset consisting of the number of reviews an elite yelper has as well as how long they've maintained their elite status. This will be used for predicting the average number of reviews that it takes for a user to become an elite-yelper.
+    I will analyze a dataset consisting of the number of reviews an elite yelper has as well as how long they've maintained their elite status. This will be used for predicting the average number of reviews that it takes for a user to become an elite yelper.
 
 ii. Write 1-2 brief paragraphs on the type of data you will need for your analysis and why you chose that data:
 
-	I originally planned to use keyword parsing on top of my review analysis to allow for a more accurate prediction algorithm, but after familiarizing myself with the data, I decided to leave the keyword parsing out due to there not being enough review entries for elite yelpers. Instead, I only used the average number of reviews per year for each elite yelper. To get this, I calculated the number of years that each elite yelper had their elite status, then calculated the average number of reviews per each year of their elite status by dividing the review count by the number of years they were elite. I also included data on the timeframe that each person had their elite status to see if there was any correlation between reviews per year and the years they were elite. I chose to use this data because I thought it was the best way to create an idea for a minimum number of reviews a person should make before they are promoted to the status of elite.
+	I originally planned to use keyword parsing on top of my review analysis to allow for a more accurate prediction algorithm, but after familiarizing myself with the data, I decided to leave the keyword parsing out due to there not being enough review entries for elite yelpers. Instead, I only used the average number of reviews per year for each elite yelper. To get this, I calculated the number of years that each elite yelper had their elite status, then calculated the average number of reviews per year of their elite status by dividing the review count by the number of years they were elite. I also included data on the timeframe that each person had their elite status to see if there was any correlation between reviews per year and the years they were elite. I chose to use this data because I thought it was the best way to create an idea for a minimum number of reviews a person should make before they are promoted to the status of elite.
 
                   
-iii. Output of your finished dataset: On average, a user needs to post about 71 reviews per year to achieve alite status.
+iii. Output of your finished dataset: On average, a user needs to post about 71 reviews per year to achieve elite status.
          
 	+---------+------------+--------------+-------------+----------------------+
 	| name    | time_elite | review_count | years_elite | avg_reviews_per_year |
@@ -438,25 +438,25 @@ iv. Provide the SQL code you used to create your final dataset:
 
 	SELECT  U.name
         
-			-- group and label the years they were elite as 20XX-20YY
-			,CASE
-					WHEN MAX(E.year) <> MIN(E.year) THEN (MIN(E.year) || '-' || MAX(E.year))
-					ELSE E.year
-			END AS time_elite
+		-- group and label the years they were elite as 20XX-20YY
+		,CASE
+			WHEN MAX(E.year) <> MIN(E.year) THEN (MIN(E.year) || '-' || MAX(E.year))
+			ELSE E.year
+		END AS time_elite
 
-			,U.review_count
+		,U.review_count
 
-			-- selects and calculates the year when more than one year as an elite
-			,CASE
-					WHEN MAX(E.year) <> MIN(E.year) THEN MAX(E.year) - MIN(E.year) + 1
-					ELSE 1
-			END AS years_elite
+		-- selects and calculates the year when more than one year as an elite
+		,CASE
+			WHEN MAX(E.year) <> MIN(E.year) THEN MAX(E.year) - MIN(E.year) + 1
+			ELSE 1
+		END AS years_elite
 
-			-- total review count per user / number of years elite = avg reviews per year
-			,U.review_count / (CASE
-					WHEN MAX(E.year) <> MIN(E.year) THEN MAX(E.year) - MIN(E.year) + 1
-					ELSE 1
-			END) AS avg_reviews_per_year
+		-- total review count per user / number of years elite = avg reviews per year
+		,U.review_count / (CASE
+			WHEN MAX(E.year) <> MIN(E.year) THEN MAX(E.year) - MIN(E.year) + 1
+			ELSE 1
+		END) AS avg_reviews_per_year
 	FROM user U
 	INNER JOIN elite_years E ON E.user_id = U.id
 	GROUP BY U.name
